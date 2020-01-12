@@ -51,11 +51,13 @@ RUN cd /unibench/swftools-0.9.2/ && ./configure &&\
     cp src/wav2swf /d/p/justafl/ &&\
     make clean
 
-RUN apt install -y nasm &&\
-    cd /unibench/ffmpeg-4.0.1 && ./configure --disable-shared --cc="$CC" --cxx="$CXX" &&\
-    make -j &&\
-    cp ffmpeg_g /d/p/justafl/ffmpeg &&\
-    make clean
+# Comment out ffmpeg for building under travis-ci
+# The memory usage seems to exceed 3GB and may make the whole build job timeout (50 minutes)
+#RUN apt install -y nasm &&\
+#    cd /unibench/ffmpeg-4.0.1 && ./configure --disable-shared --cc="$CC" --cxx="$CXX" &&\
+#    make -j &&\
+#    cp ffmpeg_g /d/p/justafl/ffmpeg &&\
+#    make clean
 
 RUN cd /unibench/flvmeta-1.2.1 && cmake . &&\
     make -j &&\
