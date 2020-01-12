@@ -11,6 +11,7 @@ env:
   - TAG=gcc
   - TAG=afl
   - TAG=honggfuzz
+  - TAG=coverage
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
