@@ -2,14 +2,18 @@ version: ~> 1.0
 services:
   - docker
 
+env:
+  - TAG=gcc
+  - TAG=afl
+
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - git clone https://github.com/zjuchenyuan/dockerized_fuzzing
 
 install:
-  - cd dockerized_fuzzing/afl && docker build -t unifuzz/unibench:afl -f Dockerfile.unibench .
+  - docker pull unifuzz/unibench:$TAG
+  - cd $TAG && docker build -t unifuzz/unibench:$TAG .
 
 deploy:
   provider: script
   script:
-    - docker push unifuzz/unibench:afl
+    - docker push unifuzz/unibench:$TAG
