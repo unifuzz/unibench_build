@@ -8,7 +8,7 @@ RUN git clone https://github.com/UNIFUZZ/unibench &&\
     mv SQLite-8a8ffc86 SQLite-3.8.9 && mv binutils_5279478 binutils-5279478 && mv libtiff-Release-v3-9-7 libtiff-3.9.7 &&\
     ls -alh
 
-RUN mkdir -p /d/p/normal /d/p/aflasan
+RUN mkdir -p /d/p/normal
 
 RUN cd /unibench/exiv2-0.26 && cmake -DEXIV2_ENABLE_SHARED=OFF . &&\
     make -j &&\ 
@@ -126,3 +126,5 @@ RUN cd /unibench/libpcap-1.8.1 && ./configure --disable-shared &&\
 RUN wget --quiet https://github.com/UNIFUZZ/unibench_build/raw/master/ffmpeg/gcc.tar.gz &&\
     tar xf gcc.tar.gz -C / &&\
     rm gcc.tar.gz
+
+RUN ls -alh /d/p/*

@@ -167,3 +167,5 @@ RUN cd /unibench/libpcap-1.8.1 && ./configure --disable-shared &&\
 RUN wget --quiet https://github.com/UNIFUZZ/unibench_build/raw/master/ffmpeg/afl.tar.gz &&\
     tar xf afl.tar.gz -C / &&\
     rm afl.tar.gz
+
+RUN ls -alh /d/p/*
