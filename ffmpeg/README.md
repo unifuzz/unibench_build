@@ -8,13 +8,15 @@ This folder is not part of travis build.
 
 ### Binaries built for usage
 
-I have put built binary packages here using Git LFS. (Thanks to github allowing maximum 2GB Git LFS storage.)
+I have put built binary packages here using Git LFS.
+
+As the traffic is limited for GitHub (only 1 GB/month), I also mirrored this repository [here](https://gitlab.com/unifuzz/unibench_build/tree/master/ffmpeg).
 
 So, in the [Dockerfile of afl](https://github.com/UNIFUZZ/unibench_build/blob/master/afl/Dockerfile), I have added these lines:
 
 ```
 # this will add /d/p/justafl/ffmpeg and /d/p/aflasan/ffmpeg
-RUN wget https://github.com/UNIFUZZ/unibench_build/raw/master/ffmpeg/afl.tar.gz &&\
+RUN wget https://gitlab.com/unifuzz/unibench_build/raw/master/ffmpeg/afl.tar.gz &&\
     tar xf afl.tar.gz -C / &&\
     rm afl.tar.gz
 ```
