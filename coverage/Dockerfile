@@ -102,3 +102,5 @@ RUN rm -r /unibench/ffmpeg-4.0.1 &&\
     tar xf coverage.tar.gz -C / &&\
     rm coverage.tar.gz &&\
     cp /unibench/ffmpeg-4.0.1/ffmpeg_g /d/p/cov/ffmpeg
+
+RUN ls -alh /d/p/*
