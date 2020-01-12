@@ -1,16 +1,15 @@
 version: ~> 1.0
-sudo: required
 services:
   - docker
 
 before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - git clone https://github.com/zjuchenyuan/dockerized_fuzzing
 
 install:
-  - cd dockerized_fuzzing/afl && docker build -t zjuchenyuan/afl:unibench -f Dockerfile.unibench .
+  - cd dockerized_fuzzing/afl && docker build -t unifuzz/unibench:afl -f Dockerfile.unibench .
 
 deploy:
   provider: script
   script:
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push zjuchenyuan/afl:unibench
+    - docker push unifuzz/unibench:afl
