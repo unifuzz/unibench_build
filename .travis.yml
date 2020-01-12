@@ -10,7 +10,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 install:
-  - docker pull unifuzz/unibench:$TAG || exit 0
+  - sh -c "docker pull unifuzz/unibench:$TAG || exit 0"
   - cd $TAG && docker build -t unifuzz/unibench:$TAG .
 
 deploy:
