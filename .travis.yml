@@ -2,6 +2,8 @@ version: ~> 1.0
 services:
   - docker
 
+language: minimal
+
 env:
   - TAG=gcc
   - TAG=afl
@@ -10,8 +12,8 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 install:
-  - sh -c "docker pull unifuzz/unibench:$TAG || exit 0"
-  - cd $TAG && docker build -t unifuzz/unibench:$TAG .
+  - docker pull unifuzz/unibench:$TAG || true
+  - cd $TAG && docker build --cache-from unifuzz/unibench:$TAG -t unifuzz/unibench:$TAG .
 
 deploy:
   provider: script
