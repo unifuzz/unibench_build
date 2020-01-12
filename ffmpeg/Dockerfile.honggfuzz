@@ -1,6 +1,6 @@
 FROM zjuchenyuan/honggfuzz
-RUN git clone https://github.com/UNIFUZZ/unibench &&\
-    cd unibench && \
+RUN git clone https://github.com/UNIFUZZ/unibench /unibench &&\
+    cd /unibench && \
     mkdir mp3gain-1.5.2 && cd mp3gain-1.5.2 && mv ../mp3gain-1.5.2.zip ./ && unzip -q mp3gain-1.5.2.zip && rm mp3gain-1.5.2.zip && cd .. &&\
     ls *.zip|xargs -i unzip -q '{}' &&\
     ls *.tar.gz|xargs -i tar xf '{}' &&\
