@@ -46,6 +46,8 @@ RUN cd /unibench/mp3gain-1.5.2 && sed -i 's/CC=/CC?=/' Makefile &&\
     make clean
 
 RUN cd /unibench/swftools-0.9.2/ && ./configure &&\
+    sed -i 's/int inline ActionTagSize/int ActionTagSize/' ./lib/modules/swfaction.c &&\
+    sed -i 's/byte inline PaethPredictor/byte PaethPredictor/' ./src/png2swf.c &&\
     make -j &&\
     cp src/wav2swf /d/p/honggfuzz/ &&\
     make clean
