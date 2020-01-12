@@ -7,6 +7,7 @@ language: minimal
 env:
   - TAG=gcc
   - TAG=afl
+  - GIT_LFS_SKIP_SMUDGE=1
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

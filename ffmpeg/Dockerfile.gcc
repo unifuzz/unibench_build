@@ -7,10 +7,10 @@ RUN git clone https://github.com/UNIFUZZ/unibench &&\
     rm -r .git/ *.tar.gz *.zip &&\
     mv SQLite-8a8ffc86 SQLite-3.8.9 && mv binutils_5279478 binutils-5279478 && mv libtiff-Release-v3-9-7 libtiff-3.9.7 &&\
     ls -alh
-RUN mkdir -p /d/p/justafl /d/p/aflasan
+RUN mkdir -p /d/p/normal
 
 RUN apt update && apt install -y nasm &&\
     cd /unibench/ffmpeg-4.0.1 && ./configure --disable-shared --cc="$CC" --cxx="$CXX" &&\
     make -j &&\
-    cp ffmpeg_g /d/p/justafl/ffmpeg &&\
+    cp ffmpeg_g /d/p/normal/ffmpeg &&\
     make clean

@@ -164,6 +164,6 @@ RUN cd /unibench/libpcap-1.8.1 && ./configure --disable-shared &&\
     make clean && cd /unibench/libpcap-1.8.1 && make clean
 
 # this will add /d/p/justafl/ffmpeg and /d/p/aflasan/ffmpeg
-RUN wget https://github.com/UNIFUZZ/unibench_build/raw/master/ffmpeg/afl.tar.gz &&\
+RUN wget --quiet https://github.com/UNIFUZZ/unibench_build/raw/master/ffmpeg/afl.tar.gz &&\
     tar xf afl.tar.gz -C / &&\
     rm afl.tar.gz
