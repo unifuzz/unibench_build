@@ -97,4 +97,8 @@ RUN cd /unibench/libpcap-1.8.1 && ./configure --disable-shared &&\
     make -j &&\
     cp tcpdump /d/p/cov/
 
-# TODO: add ffmpeg
+RUN rm -r /unibench/ffmpeg-4.0.1 &&\
+    wget --quiet https://gitlab.com/unifuzz/unibench_build/raw/master/ffmpeg/coverage.tar.gz &&\
+    tar xf coverage.tar.gz -C / &&\
+    rm coverage.tar.gz &&\
+    cp /unibench/ffmpeg-4.0.1/ffmpeg_g /d/p/cov/ffmpeg

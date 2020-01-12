@@ -32,3 +32,8 @@ docker run -it --rm -v `pwd`:/data unibench_tmp:$TAG tar cf /data/${TAG}.tar.gz 
 docker rmi unibench_tmp:$TAG
 ```
 
+Specially, coverage build need the build folder, so `coverage.tar.gz` is created by:
+
+```
+docker run -it --rm -v `pwd`:/data unibench_tmp:coverage tar cf /data/coverage.tar.gz /unibench/ffmpeg-4.0.1
+```
