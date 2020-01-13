@@ -11,6 +11,7 @@ env:
   - TAG=gcc
   - TAG=afl
   - TAG=honggfuzz
+  - TAG=vuzzer
   - TAG=coverage
 
 before_install:
