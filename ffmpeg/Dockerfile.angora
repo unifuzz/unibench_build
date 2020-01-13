@@ -1,0 +1,24 @@
+FROM zjuchenyuan/angora
+RUN git clone https://github.com/UNIFUZZ/unibench /unibench &&\
+    cd /unibench && \
+    mkdir mp3gain-1.5.2 && cd mp3gain-1.5.2 && mv ../mp3gain-1.5.2.zip ./ && unzip -q mp3gain-1.5.2.zip && rm mp3gain-1.5.2.zip && cd .. &&\
+    ls *.zip|xargs -i unzip -q '{}' &&\
+    ls *.tar.gz|xargs -i tar xf '{}' &&\
+    rm -r .git/ *.tar.gz *.zip &&\
+    mv SQLite-8a8ffc86 SQLite-3.8.9 && mv binutils_5279478 binutils-5279478 && mv libtiff-Release-v3-9-7 libtiff-3.9.7 &&\
+    ls -alh
+
+RUN mkdir -p /d/p/angora/taint /d/p/angora/fast &&\
+    apt update && apt install -y nasm libglib2.0-dev gtk-doc-tools libtiff-dev libpng-dev tcl-dev
+
+RUN /angora/tools/gen_library_abilist.sh '/usr/lib/x86_64-linux-gnu/libz.so' discard >> /tmp/abilist.txt
+
+ENV ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt
+
+RUN apt update && apt install -y nasm &&\
+    cd /unibench/ffmpeg-4.0.1 && ./configure --disable-shared --cc="$CC" --cxx="$CXX" &&\
+    make -j &&\
+    cp ffmpeg_g /d/p/fast/ffmpeg &&\
+    make clean && USE_TRACK=1 make -j &&\
+    cp ffmpeg_g /d/p/taint/ffmpeg &&\
+    make clean

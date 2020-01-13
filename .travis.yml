@@ -2,7 +2,7 @@ version: ~> 1.0
 services:
   - docker
 
-language: minimal
+language: shell
 
 git:
   lfs_skip_smudge: true
