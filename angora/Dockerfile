@@ -64,4 +64,4 @@ RUN cd /unibench/libpcap-1.8.1 && ./configure --disable-shared &&\
 
 # TODO: add ffmpeg
 
-RUN ls -alh /d/p/*
+RUN ls -alh /d/p/angora/*
