@@ -10,6 +10,7 @@ git:
 env:
   - TAG=gcc
   - TAG=afl
+  - TAG=aflfast
   - TAG=honggfuzz
   - TAG=vuzzer
   - TAG=angora_step1
