@@ -15,7 +15,7 @@ RUN /angora/tools/gen_library_abilist.sh '/usr/lib/x86_64-linux-gnu/libz.so' dis
 
 ENV ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt
 
-RUN cd /unibench/ffmpeg-4.0.1 && ./configure --disable-shared --cc="$CC" --cxx="$CXX" &&\
+RUN cd /unibench/ffmpeg-4.0.1 && ./configure --disable-doc --disable-shared --cc="$CC" --cxx="$CXX" &&\
     make -j &&\
     cp ffmpeg_g /d/p/angora/fast/ffmpeg &&\
     make clean && USE_TRACK=1 make -j &&\
