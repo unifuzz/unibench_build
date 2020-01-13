@@ -22,7 +22,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 install:
-  - mkdir -p /tmp/dockercache && md5sum -c /tmp/dockercache/$TAG && exit 0
+  - mkdir -p /tmp/dockercache && md5sum -c /tmp/dockercache/$TAG && exit 0 || true
   - docker pull unifuzz/unibench:$TAG || true
   - cd $TAG && docker build --cache-from unifuzz/unibench:$TAG -t unifuzz/unibench:$TAG . && cd .. && md5sum ${TAG}/Dockerfile > /tmp/dockercache/$TAG
 
