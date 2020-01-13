@@ -10,7 +10,7 @@ RUN cd /unibench/jq-1.5 && ./configure --disable-shared &&\
 RUN cd /unibench/mujs-1.0.2 &&\
     build=debug make -j &&\
     cp build/debug/mujs /d/p/angora/fast/ &&\
-    make clean && USE_TRACK=1 build=debug make -j &&\
+    make clean && sleep 3 && USE_TRACK=1 build=debug make -j &&\
     cp build/debug/mujs /d/p/angora/taint/ &&\
     make clean
 
