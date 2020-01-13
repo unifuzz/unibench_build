@@ -13,6 +13,7 @@ env:
   - TAG=honggfuzz
   - TAG=vuzzer
   - TAG=angora_step1
+  - TAG=angora_step2
   - TAG=angora
   - TAG=coverage
 
