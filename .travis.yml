@@ -12,6 +12,7 @@ env:
   - TAG=afl
   - TAG=honggfuzz
   - TAG=vuzzer
+  - TAG=angora
   - TAG=coverage
 
 before_install:
