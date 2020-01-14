@@ -11,13 +11,31 @@ RUN git clone https://github.com/UNIFUZZ/unibench /unibench &&\
 RUN mkdir -p /d/p/angora/taint /d/p/angora/fast &&\
     apt update && apt install -y nasm libglib2.0-dev gtk-doc-tools libtiff-dev libpng-dev tcl-dev
 
-RUN /angora/tools/gen_library_abilist.sh '/usr/lib/x86_64-linux-gnu/libz.so' discard >> /tmp/abilist.txt
+RUN for i in libz liblzma; do /angora/tools/gen_library_abilist.sh "/usr/lib/x86_64-linux-gnu/$i.so" discard >> /tmp/abilist.txt; done
 
 ENV ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt
 
 RUN cd /unibench/ffmpeg-4.0.1 && ./configure --disable-doc --disable-shared --cc="$CC" --cxx="$CXX" &&\
     make -j &&\
     cp ffmpeg_g /d/p/angora/fast/ffmpeg &&\
-    make clean && USE_TRACK=1 make -j &&\
-    cp ffmpeg_g /d/p/angora/taint/ffmpeg &&\
+    make clean
+
+#RUN cd /unibench/ffmpeg-4.0.1 &&\
+#    USE_TRACK=1  make -j >& make.log || true &&\
+#    sh /angora/tools/gen_abilist_from_error.sh make.log |sort|uniq|grep "^fun:" >> /tmp/abilist.txt
+
+#RUN cat /tmp/abilist.txt | grep -v "undefined reference" | grep -v "/unibench" | grep -v "(" | grep -v "\\.a" | grep -v ")" >> /tmp/abilist2.txt &&\
+#    mv /tmp/abilist2.txt /tmp/abilist.txt
+
+#RUN cd /unibench/ffmpeg-4.0.1 &&\
+#    make clean &&\
+#    USE_TRACK=1  make -j
+# Still failing, need extract abilist.txt again, So why not just provide it here
+
+ADD abilist.txt /tmp/abilist.txt
+RUN cd /unibench/ffmpeg-4.0.1 &&\
+    make clean &&\
+    USE_TRACK=1  make -j
+
+RUN cd /unibench/ffmpeg-4.0.1 && cp ffmpeg_g /d/p/angora/taint/ffmpeg &&\
     make clean
