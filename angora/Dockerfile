@@ -24,4 +24,11 @@ RUN wget --quiet https://gitlab.com/unifuzz/unibench_build/raw/master/ffmpeg/ang
     tar xf angora.tar.gz -C / &&\
     rm angora.tar.gz
 
+RUN cd /unibench/jasper-2.0.12 && cmake -DJAS_ENABLE_SHARED=OFF -DALLOW_IN_SOURCE_BUILD=ON . &&\
+    make -j &&\
+    cp src/appl/imginfo /d/p/angora/fast/ &&\
+    make clean && USE_TRACK=1 make -j &&\
+    cp src/appl/imginfo /d/p/angora/taint/ &&\
+    make clean
+
 RUN ls -alh /d/p/angora/*
