@@ -73,9 +73,8 @@ RUN cd /unibench/xpdf-4.00 && cmake . &&\
     make -j &&\
     cp xpdf/pdftotext /d/p/cov/
 
-#--disable-amalgamation can be used for coverage build
 RUN apt install -y tcl-dev &&\
-    cd /unibench/SQLite-3.8.9 && ./configure --disable-shared &&\ 
+    cd /unibench/SQLite-3.8.9 && ./configure --disable-shared --disable-amalgamation  &&\ 
     make -j &&\
     cp sqlite3 /d/p/cov/
 
