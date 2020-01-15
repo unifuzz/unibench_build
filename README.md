@@ -1,11 +1,9 @@
 # unibench_build
 Build Docker images for unibench
 
-[![Build Status](https://travis-ci.org/unifuzz/unibench_build.svg?branch=master)](https://travis-ci.org/unifuzz/unibench_build) ![Docker Pulls](https://img.shields.io/docker/pulls/unifuzz/unibench)
+[![Build Status](https://travis-ci.org/unifuzz/unibench_build.svg?branch=master)](https://travis-ci.org/unifuzz/unibench_build) [![Docker Pulls](https://img.shields.io/docker/pulls/unifuzz/unibench)](https://hub.docker.com/r/unifuzz/unibench)
 
-## Images
-
-[unifuzz/unibench](https://hub.docker.com/r/unifuzz/unibench/tags)
+## Image Tags [unifuzz/unibench](https://hub.docker.com/r/unifuzz/unibench/tags)
 
 Take **exiv2** as an example to illustrate the binary path:
 
@@ -31,7 +29,7 @@ Binary Path: **/d/p/justafl/exiv2**
 
 Just a copy of afl built binaries.
 
-## unifuzz/unibench:angora
+### unifuzz/unibench:angora
 
 Binary Path: **/d/p/angora/fast/exiv2** and **/d/p/angora/taint/exiv2**, both two binaries are required by Angora.
 
