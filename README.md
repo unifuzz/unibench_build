@@ -1,6 +1,8 @@
 # unibench_build
 Build Docker images for unibench
 
+[![Build Status](https://travis-ci.org/unifuzz/unibench_build.svg?branch=master)](https://travis-ci.org/unifuzz/unibench_build) ![Docker Pulls](https://img.shields.io/docker/pulls/unifuzz/unibench)
+
 ## Images
 
 [unifuzz/unibench](https://hub.docker.com/r/unifuzz/unibench/tags)
