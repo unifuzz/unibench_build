@@ -16,6 +16,8 @@ env:
   - TAG=angora
   - TAG=honggfuzz
   - TAG=mopt
+  - TAG=qsym
+  - TAG=tfuzz
   - TAG=vuzzer
   - TAG=coverage
 
