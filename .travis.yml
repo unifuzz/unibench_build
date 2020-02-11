@@ -17,6 +17,7 @@ env:
   - TAG=angora_step2
   - TAG=angora
   - TAG=coverage
+  - TAG=flawfinder
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
