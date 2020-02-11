@@ -11,11 +11,14 @@ env:
   - TAG=gcc
   - TAG=afl
   - TAG=aflfast
-  - TAG=honggfuzz
-  - TAG=vuzzer
   - TAG=angora_step1
   - TAG=angora_step2
   - TAG=angora
+  - TAG=honggfuzz
+  - TAG=mopt
+  - TAG=qsym
+  - TAG=tfuzz
+  - TAG=vuzzer
   - TAG=coverage
   - TAG=flawfinder
 
