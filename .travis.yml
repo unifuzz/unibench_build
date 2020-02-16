@@ -21,6 +21,7 @@ env:
   - TAG=vuzzer
   - TAG=coverage
   - TAG=flawfinder
+  - TAG=rats
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
