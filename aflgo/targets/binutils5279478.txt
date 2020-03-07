@@ -1,0 +1,3 @@
+/unibench/binutils-5279478/binutils/nm.c:792
+/unibench/binutils-5279478/binutils/nm.c:778
+/unibench/binutils-5279478/binutils/nm.c:886

@@ -1,0 +1,11 @@
+/unibench/jhead-3.00/jhead.c:378
+/unibench/jhead-3.00/jpgfile.c:543
+/unibench/jhead-3.00/jpgfile.c:548
+/unibench/jhead-3.00/jpgfile.c:165
+/unibench/jhead-3.00/exif.c:691
+/unibench/jhead-3.00/exif.c:621
+/unibench/jhead-3.00/jpgfile.c:535
+/unibench/jhead-3.00/jpgfile.c:539
+/unibench/jhead-3.00/exif.c:1195
+/unibench/jhead-3.00/exif.c:617
+/unibench/jhead-3.00/jpgfile.c:180

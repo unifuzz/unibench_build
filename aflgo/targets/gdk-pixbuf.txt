@@ -1,0 +1,14 @@
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:732
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:759
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/io-ico.c:888
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:780
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/io-xpm.c:347
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:576
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-io.c:540
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:639
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-loader.c:521
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:597
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:820
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:616
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-loader.c:380
+/unibench/gdk-pixbuf-2.31.1/gdk-pixbuf/gdk-pixbuf-animation.c:702
