@@ -22,6 +22,7 @@ env:
   - TAG=coverage
   - TAG=flawfinder
   - TAG=rats
+  - TAG=runcrash
 
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
