@@ -306,3 +306,21 @@ RUN cd $SUBJECT && make distclean &&\
     CC="$CC $ADDITIONAL2" CXX="$CXX $ADDITIONAL2" make -j &&\
     cp $BINPATH /d/p/aflgo
 
+
+ENV SUBJECT=/unibench/ffmpeg-4.0.1  \
+    BIN=ffmpeg_g BINPATH=ffmpeg_g
+ENV TMP_DIR=$SUBJECT/obj-aflgo/temp \
+    ADDITIONAL="-targets=$SUBJECT/obj-aflgo/temp/BBtargets.txt -outdir=$SUBJECT/obj-aflgo/temp -flto -fuse-ld=gold -Wl,-plugin-opt=save-temps" \
+    ADDITIONAL2="-distance=$SUBJECT/obj-aflgo/temp/distance.cfg.txt"
+RUN mkdir -p $TMP_DIR && cp /targets/ffmpeg.txt $TMP_DIR/BBtargets.txt &&\
+    apt update && apt install -y nasm &&\
+    cd $SUBJECT &&\
+    ./configure --disable-asm --disable-shared --cc="$CC $ADDITIONAL" --cxx="$CXX $ADDITIONAL"  &&\
+    make -j4 &&\
+    cat $TMP_DIR/BBnames.txt | rev | cut -d: -f2- | rev | sort | uniq > $TMP_DIR/BBnames2.txt && mv $TMP_DIR/BBnames2.txt $TMP_DIR/BBnames.txt && cat $TMP_DIR/BBcalls.txt | sort | uniq > $TMP_DIR/BBcalls2.txt && mv $TMP_DIR/BBcalls2.txt $TMP_DIR/BBcalls.txt && $AFLGO/scripts/genDistance.sh $SUBJECT $TMP_DIR $BIN &&\
+    make clean
+RUN cd $SUBJECT &&\
+    ./configure --disable-asm --disable-shared --cc="$CC $ADDITIONAL2" --cxx="$CXX $ADDITIONAL2" &&\
+    make -j4 &&\
+    cp $BINPATH /d/p/aflgo/ffmpeg
+    
