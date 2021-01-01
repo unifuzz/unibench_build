@@ -3,6 +3,26 @@ Build Docker images for unibench
 
 [![Build Status](https://travis-ci.org/unifuzz/unibench_build.svg?branch=master)](https://travis-ci.org/unifuzz/unibench_build) [![Docker Pulls](https://img.shields.io/docker/pulls/unifuzz/unibench)](https://hub.docker.com/r/unifuzz/unibench)
 
+## Build flags contained!
+
+Fuzzing requires building target program using static build. So you can learn how to build these 20 program by reading our Dockerfiles.
+
+For example, to build `gdk-pixbuf-2.31.1`, by reading [AFL Dockerfile](https://github.com/unifuzz/unibench_build/blob/master/afl/Dockerfile), you can find:
+
+```
+RUN apt update && apt install -y libglib2.0-dev gtk-doc-tools libtiff-dev libpng-dev &&\
+    cd /unibench/gdk-pixbuf-2.31.1 &&\
+    ./autogen.sh --enable-static=yes --enable-shared=no --with-included-loaders=yes && make -j &&\
+    cp gdk-pixbuf/gdk-pixbuf-pixdata /d/p/justafl/ &&\
+    make clean && AFL_USE_ASAN=1 make -j &&\
+    cp gdk-pixbuf/gdk-pixbuf-pixdata /d/p/aflasan/ &&\
+    make clean
+```
+
+So, you can learn that `--enable-static=yes --enable-shared=no --with-included-loaders=yes` is required for building a static binary, and the built binary is `gdk-pixbuf/gdk-pixbuf-pixdata`.
+
+Hope these Dockerfiles can help you ease the tiring compilation steps before your fuzzing.
+
 ## Image Tags [unifuzz/unibench](https://hub.docker.com/r/unifuzz/unibench/tags)
 
 Take **exiv2** as an example to illustrate the binary path:
